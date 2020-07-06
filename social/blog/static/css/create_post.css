@@ -1,0 +1,25 @@
+.create_post{
+    position: fixed;
+    z-index: 2;
+    display: inline-block;
+    background-color: rgb(255, 235, 210);
+    color: blueviolet;
+    bottom: 20px;
+    right: 10px;
+    width: 60px;
+    font-size: 40px;
+    text-align: center;
+    vertical-align: center;
+    border: solid;
+    border-color: brown;
+    border-radius: 50px;
+    
+}
+.profile_update{
+  display:none;
+  background-color: white;
+  z-index=2;
+  top: 60px;
+  width: 70%;
+  right: 15%;
+}

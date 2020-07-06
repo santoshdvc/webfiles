@@ -1,0 +1,16 @@
+.profile_name{
+    color: blueviolet;
+    font-size: xx-large;
+    font: outline;
+}
+.profile_pic{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: solid;
+    border-radius: 100px;
+    border-color: rgb(184, 111, 253);
+    object-fit: cover;
+}
+.profile_email{
+    color: blue;
+}

@@ -1,0 +1,42 @@
+{%extends "blog/base.html"%}
+{%load crispy_forms_tags%}
+{% block content%}
+
+    <div id='main'>
+        <div class='posts'>
+            <div><img src="{{ user.profile.image.url }}" class= "profile_pic" width=100px height="100px"></div>
+            <div class="profile_name">{{user.username}}</div>
+            <div> <span>Email:</span> <span class="profile_email">{{user.email}}</span></div>
+        </div>
+        <button class="sign_btn" id="on_btn" onclick="document.getElementById('profile_up').style.display ='block'; document.getElementById('on_btn').style.display ='none';">Update Profile</button>
+        <div class="profile_update" id="profile_up">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4"> Update Profile</legend>
+                {{ u_form|crispy }}
+                {{ p_form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="sign_btn" type="submit" onclick="document.getElementById('on_btn').style.display ='block';">Done</button>
+            </div>
+        </form>
+            </div>
+        {% for post in posts%}
+        <div class='posts'>
+            <div class="post_title"><img src="{{ post.author.profile.image.url }}" width="50px" height="50px" class="profile_pic">
+                <a href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a></div> <small class="dates">{{post.date_post|date:"F d, Y" }}</small>
+            <a href="{% url 'post-detail' post.id %}"><h2> {{post.title}}</h2></a>
+            <div class='post_content'>{{post.content}}</div>
+            {% if post.img_src.url != '/media/noimage.png' %}
+                <div><img src="{{post.img_src.url}}" class="post_image" width="300px"></div>
+            {% else %}
+                <div></div>
+            {% endif %}
+            <div>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+
+{% endblock content %}

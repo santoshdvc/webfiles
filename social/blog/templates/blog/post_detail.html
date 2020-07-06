@@ -1,0 +1,23 @@
+{%extends "blog/base.html"%}
+{% block content%}
+<div id='main'> 
+        <div class='posts'>
+            <div class="post_title"><img src="{{ object.author.profile.image.url }}" width="50px" height="50px" class="profile_pic">
+                <a href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a></div> <small class="dates">{{post.date_post|date:"F d, Y" }}</small>
+            <a href="{% url 'post-detail' post.id %}"><h2> {{post.title}}</h2></a>
+            <div class='post_content'>{{object.content}}</div>
+            {% if object.img_src.url != '/media/noimage.png' %}
+                <div><img src="{{object.img_src.url}}" class="post_image"></div>
+            {% else %}
+                <div></div>
+            {% endif %}
+            <div>
+        </div>
+    </div>
+    {% if object.author == user %}
+        <a href="{% url 'post-update' object.id%}">Update</a><br><a href="{% url 'post-delete' object.id%}">Delete</a>
+    {% else %}
+        <div></div>
+    {% endif %}
+</div>
+{% endblock content %}
